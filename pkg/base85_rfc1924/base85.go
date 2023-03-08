@@ -281,7 +281,8 @@ func (d *decoder) Read(p []byte) (n int, err error) {
 
 	for len(p) > 0 {
 		// try filling the buffer
-		m, err := d.r.Read(d.bufin[d.fill:])
+		var m int
+		m, err = d.r.Read(d.bufin[d.fill:])
 		d.fill += m
 		if err != nil {
 			// no further input, decode and copy into p
@@ -313,7 +314,8 @@ func (d *decoder) Read(p []byte) (n int, err error) {
 		d.fill = d.fill % 5
 		chunkedMax -= d.fill
 		d.decoded = make([]byte, DecodedLen(chunkedMax))
-		k, err := Decode(d.decoded, d.bufin[:chunkedMax])
+		var k int
+		k, err = Decode(d.decoded, d.bufin[:chunkedMax])
 		copy(p, d.decoded[:k])
 		p = p[k:]
 		n += k
