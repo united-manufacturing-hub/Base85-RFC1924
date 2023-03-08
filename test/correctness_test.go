@@ -1,35 +1,11 @@
 package test
 
 import (
-	"base85RFC1924/pkg/base85_rfc1924"
-	"base85RFC1924/test/go-rfc1924/base85"
 	"bytes"
-	hailongz "github.com/hailongz/golang/basex"
+	"github.com/united-manufacturing-hub/Base85-RFC1924/pkg/base85_rfc1924"
+	"github.com/united-manufacturing-hub/Base85-RFC1924/test/go-rfc1924/base85"
 	"testing"
 )
-
-func TestHailongzBaseX(t *testing.T) {
-	encoding, err := hailongz.NewEncoding("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+-;<=>?@^_`{|}~")
-	if err != nil {
-		t.Fatalf("Error creating encoding: %v", err)
-	}
-
-	for _, input := range InputResultMap {
-		encoded := encoding.Encode([]byte(input))
-		t.Logf("Encoded %v to %v [%d]", input, encoded, len(encoded))
-
-		var decoded []byte
-		decoded, err = encoding.Decode(encoded)
-		if err != nil {
-			t.Fatalf("Error decoding: %v", err)
-		}
-
-		if string(decoded) != input {
-			t.Fatalf("Decoded string does not match input: %v != %v", string(decoded), input)
-		}
-
-	}
-}
 
 func TestJamesRuanGoRFC1924(t *testing.T) {
 

@@ -1,9 +1,9 @@
 package test
 
 import (
-	"base85RFC1924/test/go-rfc1924/base85"
 	"bytes"
 	"fmt"
+	"github.com/united-manufacturing-hub/Base85-RFC1924/test/go-rfc1924/base85"
 	"testing"
 )
 
